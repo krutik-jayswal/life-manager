@@ -14,8 +14,8 @@ import { FutureFundService } from '../services/future-fund.service';
 export class LinkFundStocksComponent implements OnInit {
 
   public fundId: number;
-  private allStocks:Stock[];
-  private selectedStocks:Stock[];
+  public allStocks:Stock[];
+  public selectedStocks:Stock[];
   public selectedStockId:number;
   public title:string;
   constructor(private stockService:StockService,

@@ -12,8 +12,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class LinkFundSavingsComponent implements OnInit {
   public fundId: number;
-  private allSavings:Saving[];
-  private selectedSavings:Saving[];
+  public allSavings:Saving[];
+  public selectedSavings:Saving[];
   public selectedSavingId:number;
   public title:string;
   constructor(private savingService:SavingService,

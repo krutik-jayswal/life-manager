@@ -22,7 +22,7 @@ export class AccountComponent implements OnInit {
   type: string;
 
 
-  accounts: Account[];
+  public accounts: Account[];
 
   constructor(private accountService: AccountService,
     public dialog: MatDialog) { }
