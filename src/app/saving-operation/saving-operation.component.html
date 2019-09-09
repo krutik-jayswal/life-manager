@@ -1,0 +1,49 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field>
+    <input matInput placeholder="Saving Name" formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Saving Type" formControlName="type" />
+  </mat-form-field>
+
+  
+  <mat-form-field>
+    <input matInput placeholder="Account Number" formControlName="accountNumber">
+  </mat-form-field>
+  
+  <mat-form-field>
+    <input matInput type="number" placeholder="Return Of Interest" formControlName="returnOfInterest">
+  </mat-form-field>
+
+  <mat-form-field>
+          <input matInput type="date" placeholder="Created Date" formControlName="createdDate" [(ngModel)]="createdDate"/>
+  </mat-form-field>
+
+  <mat-form-field>
+      <input matInput type="date" placeholder="Maturity Date" formControlName="maturityDate" [(ngModel)]="maturityDate"/>
+  </mat-form-field>
+
+  <mat-form-field>
+      <input matInput type="number" placeholder="Amount" formControlName="amount">
+  </mat-form-field>
+  
+  <mat-form-field>
+      <input matInput type="number" placeholder="Maturity Amount" formControlName="maturityAmount">
+  </mat-form-field>
+  
+
+  <mat-form-field>
+    <mat-select placeholder="Accounts" formControlName="account">
+      <mat-option *ngFor="let account of accounts" [value]="account.accountId">
+        {{account.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button type="button" *ngIf="isNewRecord" class="btn btn-md btn-primary lm-save-button" (click)='saveSaving()'>Save</button>
+  <button type="button" *ngIf="!isNewRecord" id="{{id}}" class="btn btn-md btn-primary lm-save-button" (click)='updateSaving($event)'>Update</button>
+  <button type="button" class="btn btn-md btn-primary lm-close-button" (click)='close()'>Close</button>
+</mat-dialog-actions>

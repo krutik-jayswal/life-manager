@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content>
+
+  <mat-form-field>
+    <mat-select placeholder="Savings" [(ngModel)]="selectedSavingId">
+      <mat-option  *ngFor="let saving of allSavings" [value]="saving.savingId">
+        {{saving.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <span class="action-link-plus" (click)="assoiateSavingWithFunds($event)" style="margin-left: 5%;"></span>
+
+  <hr/>
+  <div style="display: inline-flex;">
+     <div *ngFor="let saving of selectedSavings" id="{{saving.savingId}}" style="padding-left:10px">
+        <span class="action-link-close"  (click)="removeAssoiatedSavingInFunds($event)"></span>
+        <span>{{saving.name}}</span>
+      </div>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button type="button" class="btn btn-md btn-primary lm-close-button" (click)='close()'>Close</button>
+</mat-dialog-actions>

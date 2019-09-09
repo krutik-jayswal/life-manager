@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content [formGroup]="form">
+
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  type="number" placeholder="Amount" formControlName="amount">
+  </mat-form-field>
+
+  <mat-form-field>
+      <input matInput type="date" placeholder="Start Date" formControlName="startDate" [(ngModel)]="startDateString">
+  </mat-form-field>
+  
+  <mat-form-field>
+    <input matInput type="date" placeholder="End Date" formControlName="endDate" [(ngModel)]="endDateString">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Recurring Type" formControlName="recurringType">
+      <mat-option value="Weekly">Weekly</mat-option>
+      <mat-option value="Monthly">Monthly</mat-option>
+      <mat-option value="Quarterly">Quarterly</mat-option>
+      <mat-option value="Half Yearly">Half Yearly</mat-option>
+      <mat-option value="Yearly">Yearly</mat-option>
+   </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field>
+     <mat-select placeholder="Saving" formControlName="saving">
+        <mat-option *ngFor="let saving of savings" [value]="saving.savingId">
+          {{saving.name}}
+        </mat-option>
+     </mat-select>
+  </mat-form-field>
+    
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button type="button" *ngIf="isNewRecord" class="btn btn-md btn-primary lm-save-button" (click)='saveSip()'>Save</button>
+  <button type="button" *ngIf="!isNewRecord" id="{{id}}" class="btn btn-md btn-primary lm-save-button" (click)='updateSip($event)'>Update</button>
+  <button type="button" class="btn btn-md btn-primary lm-close-button" (click)='close()'>Close</button>
+</mat-dialog-actions>

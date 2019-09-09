@@ -1,0 +1,33 @@
+<div class="account-main">
+    <div style="padding-right: 2%;">
+        <span class="action-link-plus" (click)="addNewAccount($event)" style="float:right;"></span>
+        <span class="action-link-transfer" (click)="transferBalance($event)" style="float:right;"></span>
+    </div>
+
+    <div class="account-grid">
+        <table class="tableDiv">
+            <thead>
+                <tr>
+                    <td colspan="4" class="heading">Account Details</td>
+                </tr>
+                <tr>
+                    <th>Account Name</th>
+                    <th>Balance</th>
+                    <th>Type</th>
+                    <th style="width: 23%;padding-left: 15px;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let account of accounts">
+                    <td>{{account?.name}}</td>
+                    <td>{{account?.balance | number:'3.1-2'}}</td>
+                    <td>{{account?.type}}</td>
+                    <td id="{{account.accountId}}">
+                        <span class="action-link-edit" (click)="editAccount($event)"></span>
+                        <span class="action-links action-link-delete" (click)="deleteAccount($event)"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

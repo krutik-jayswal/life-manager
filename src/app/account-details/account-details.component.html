@@ -1,0 +1,19 @@
+<table class="table table-striped header-fixed table-height table-account">
+    <thead>
+      <tr>
+        <td colspan="3" class="heading">Account</td>
+      </tr>
+      <tr>
+        <th class="width25 table-cell-header-menu">Account Name</th>
+        <th class="width25 table-cell-header-menu">Type</th>
+        <th class="width20 table-cell-header-menu" style= "padding-right: 50px;">Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let account of accounts">
+        <td  class="width25">{{account?.name}}</td>
+        <td  class="width25">{{account?.type}}</td>
+        <td class="width20">{{account?.balance | number:'2.1-2'}}</td>
+      </tr>
+    </tbody>
+  </table>

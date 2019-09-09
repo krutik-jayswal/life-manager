@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field>
+    <input matInput placeholder="Stock Name" formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Stock Code" formControlName="code" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="date" placeholder="Purchase Date" formControlName="purchaseDate" [(ngModel)]="purchaseDate" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Amount" formControlName="amount" [(ngModel)]="amount">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="NO. Share" formControlName="noOfShare" [(ngModel)]="noOfShare">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Accounts" formControlName="account">
+      <mat-option *ngFor="let account of accounts" [value]="account.accountId">
+        {{account.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  Total Cost : {{noOfShare*amount}}
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button type="button" *ngIf="isNewRecord" class="btn btn-md btn-primary stock-save-button" (click)='saveStock()'>Save</button>
+  <button type="button" *ngIf="!isNewRecord" id="{{id}}" class="btn btn-md btn-primary stock-save-button" (click)='updateStock($event)'>Update</button>
+  <button type="button" class="btn btn-md btn-primary stock-close-button" (click)='close()'>Close</button>
+</mat-dialog-actions>

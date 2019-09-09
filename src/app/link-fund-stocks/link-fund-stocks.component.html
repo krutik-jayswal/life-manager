@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content>
+
+  <mat-form-field>
+    <mat-select placeholder="Stocks" [(ngModel)]="selectedStockId">
+      <mat-option  *ngFor="let stock of allStocks" [value]="stock.stockId">
+        {{stock.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <span class="action-link-plus" (click)="assoiateStockWithFunds($event)" style="margin-left: 5%;"></span>
+
+  <hr/>
+  <div style="display: inline-flex;">
+     <div *ngFor="let stock of selectedStocks" id="{{stock.stockId}}" style="padding-left:10px">
+        <span class="action-link-close"  (click)="removeAssoiatedStockInFunds($event)"></span>
+        <span>{{stock.name}}</span>
+      </div>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button type="button" class="btn btn-md btn-primary lm-close-button" (click)='close()'>Close</button>
+</mat-dialog-actions>

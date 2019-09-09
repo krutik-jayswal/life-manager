@@ -1,0 +1,38 @@
+.life-field{
+    padding:5px;
+}
+.life-field-label{
+    font-weight:500;
+}
+.life-buttons{
+    padding: 5px;
+}
+.life-parent{
+    padding:10px;
+}
+.read-life-link{
+    float: right;
+    cursor: pointer;
+
+    text-decoration: underline;
+    color: blue;
+}
+.action-buttons{
+   display: inline;
+   padding-left:20px; 
+}
+.life-date{
+    font-weight: 500;
+    color:blue;
+}
+.lifestyle-main{
+    padding: 2%;
+    background-color: #F0F3F4;
+    height: 100%;
+}
+.addLife{
+    background-color:white; 
+}
+.actions-common{
+    padding-right:10px; 
+}

@@ -1,0 +1,124 @@
+<div class="expense-main">
+  <div class="expense-grid">
+    <div>
+      <span class="action-link-plus" (click)="addNewExpense($event)" style="float:right;"></span>
+      
+      <select id="year" style="float:right;margin-right:20px;margin-bottom:10px;" [(ngModel)]="expenseYear" (change)="listExpenses()">
+          <option *ngFor="let year of years" value="{{year}}">{{year}}</option>
+      </select>
+      <a href="" (click)="toggleSummaryView($event)"  style="float:left;margin-right:20px;margin-bottom:10px;">Summary</a>  
+      <!-- <a href="" (click)="showUncategorisedExpenses($event)"  style="float:left;margin-right:20px;margin-bottom:10px;">Show Uncategorised</a>        -->
+      <a href="" (click)="resetFilter()"  style="float:left;margin-right:20px;margin-bottom:10px;">Reset Filter</a>  
+      <select id="account" style="float:right;margin-right:20px;margin-bottom:10px;" [(ngModel)]="accountIdFilter" (change)="listExpenses()">
+            <option *ngFor="let account of accounts" [value]="account.accountId">{{account.name}}</option>
+      </select>
+      
+      <div class="htmlDeletion">
+        <label for="highlightOnclick">Highlight Row on click?</label>
+        <input type="checkbox" name="highlightOnclick" [(ngModel)]="highlightOnclick"> 
+      </div>
+      <select id="month" style="margin-bottom:10px;" [(ngModel)]="expenseMonth" (change)="listExpenses()">
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+      </select>
+    </div>
+    <div class="tableDiv"  *ngIf="!showExpenseSummary">
+      <table>
+        <thead>
+          <tr>
+            <td colspan="6" class="heading">Expense Details</td>
+          </tr>
+          <tr>
+            <th>Expense Name</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Action</th>
+            <ng-container *ngIf="!showUncategorisedExpense">
+            <th>From Account</th>
+            
+          </ng-container>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let expense of expenses" (click)="highlightHtmltElement($event)">
+            <td>{{expense?.name}}</td>
+            <td>{{expense?.amount | number:'2.1-2'}}</td>
+            <td>{{expense?.date}}</td>
+            <td *ngIf="showUncategorisedExpense"  id="{{expense.id}}">
+              <span class="categoryLink" id="2" (click)="updateCategoryOfExpense($event)">HOME</span>
+              <span class="categoryLink" id="4" (click)="updateCategoryOfExpense($event)">FOOD</span>
+              <span class="categoryLink" id="3" (click)="updateCategoryOfExpense($event)">SHOPPING</span>
+              <span class="categoryLink" id="1" (click)="updateCategoryOfExpense($event)">ENTERTAINMENT</span>
+              <span class="categoryLink" id="1367" (click)="updateCategoryOfExpense($event)">Travelling</span>
+              <span class="categoryLink" id="1482" (click)="updateCategoryOfExpense($event)">Holiday Trip</span>
+              <span class="categoryLink" id="1470" (click)="updateCategoryOfExpense($event)">Savings</span>
+            </td>
+            <td id="{{expense?.categoryId}}" (click)="listExpensesByCategory($event)">{{expense?.category}}</td>
+            <td>{{expense?.fromAccount}}</td>
+            <td id="{{expense.id}}">
+              <span class="action-link-edit" (click)="editExpense($event)"></span>
+              <span class="action-links action-link-delete" (click)="deleteExpense($event)"></span>
+            </td>
+            
+            
+          </tr>
+          <tr>
+              <td>Total</td>
+              <td>{{totalExpense | number:'2.1-2'}}</td>
+              <td>Total Credit</td>
+              <td>{{creditAmount | number:'2.1-2'}}</td>           
+              <td>Total Savings</td>
+              <td>{{totalSavings}}</td>
+          </tr>
+          <tr>
+            <td>Remaining</td>
+            <td>{{totalIncome-totalExpense}}</td>
+            <td>Balance ==></td>
+            <td>{{totalIncome-totalExpense+creditAmount}}</td>           
+            <td></td>
+            <td></td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>   
+  </div>
+
+  <div class="expense-report" *ngIf="showExpenseSummary">
+    <table style="width: 80%;" class="tableDiv">
+      <thead>
+        <tr>
+            <td colspan="6" class="heading">
+                <span>Summarrized Expense</span>
+                <button class="button" (click)="showYearlyReport()">Yearly Report</button>
+              </td>
+        </tr>
+        <tr>
+            <th>Category</th>
+            <th>Total Amount</th>
+          </tr>
+      </thead>    
+        <ng-container  *ngFor="let key of categoryWiseExpenseKeys">
+         <tr  *ngIf ="categoryWiseExpense.get(key) !== 0"> 
+            <td  class="expense-report-td-header">{{key}}</td>
+            <td  class="expense-report-td">{{categoryWiseExpense.get(key) | number:'2.1-2'}}</td>
+         </tr>
+       </ng-container>
+       <tr>
+          <td>Total</td>
+          <td>{{totalExpense | number:'2.1-2'}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

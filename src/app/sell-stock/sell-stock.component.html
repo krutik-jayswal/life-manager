@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Sell Stock</h2>
+
+<mat-dialog-content [formGroup]="form">
+
+  <mat-form-field>
+    <input matInput placeholder="Stock Id" formControlName="stockId">
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <input matInput placeholder="Stock Name" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Selling Price" formControlName="sellingPrice">
+  </mat-form-field>
+
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button type="button" class="btn btn-md btn-primary lm-save-button" (click)='sell()'>Sell</button>
+  <button type="button" class="btn btn-md btn-primary lm-close-button" (click)='close()'>Close</button>
+</mat-dialog-actions>

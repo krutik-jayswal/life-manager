@@ -1,0 +1,35 @@
+<div class="saving-main">
+  <div>
+    <span class="action-link-plus" (click)="addNewSaving($event)" style="float:right;"></span>
+  </div>
+
+  <div class="tableDiv">
+    <table>
+      <tr>
+        <td colspan="7" class="heading">Saving Details</td>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Account No.</th>
+        <th>R.O.I</th>
+        <th>amount</th>
+        <th>From Account</th>
+        <th style="width: 23%;padding-left: 15px;">Action</th>
+      </tr>
+      <tr *ngFor="let saving of savings">
+        <td>{{saving?.name}}</td>
+        <td>{{saving?.type}}</td>
+        <td>{{saving?.accountNumber}}</td>
+        <td>{{saving?.returnOfInterest | number:'2.1-2'}}</td>
+        <td>{{saving?.amount}}</td>
+        <td>{{saving?.account}}</td>
+        <td id="{{saving.savingId}}">
+          <span class="action-link-edit" (click)="editSaving($event)"></span>
+          <span class="action-links action-link-delete" (click)="deleteSaving($event)"></span>
+          <span class="action-links action-link-close" (click)="closeSaving($event)"></span>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

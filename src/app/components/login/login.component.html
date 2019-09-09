@@ -1,0 +1,20 @@
+<form novalidate class="lm-login-form">
+  <fieldset>
+      <div class="ying-ying">
+          <div class="app-image"></div>
+          <span class="app-title">Life Manager</span>
+
+        </div>
+      <hr class="line"/>
+      <div class="form-group">
+        <label>User Name</label>
+        <input type="text" name="userName" class="form-control" [(ngModel)]='userName' >
+      </div>
+  
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" class="form-control" [(ngModel)]='password' >
+      </div>
+    </fieldset>
+    <button type="button" class="btn btn-md btn-primary lm-login-button" (click)='login()'>Sign In</button>
+</form>          <span class="app-titile">Life Manager</span>

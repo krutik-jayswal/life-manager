@@ -1,0 +1,39 @@
+<div class="summary-main">
+<div class="tableDiv">
+  <table>
+    <thead>
+      <tr>
+        <td colspan="3" class="heading">Summary</td>
+      </tr>
+      <tr>
+        <th class="table-cell-header-menu">Name</th>
+        <th class="table-cell-header-menu">Total Amount</th>
+        <th class="table-cell-header-menu">Maturity Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Accounts    <span *ngIf="accountPercentage" style="float:right">{{accountPercentage | number:'2.1-2'}}%</span></td>
+        <td>{{totalOfAccount | number:'2.1-2'}}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Stocks    <span *ngIf="accountPercentage" style="float:right">{{stockPercentage | number:'2.1-2'}}%</span></td>
+        <td>{{totalOfStocks | number:'2.1-2'}}</td>
+        <td></td>
+      </tr>
+      <tr *ngFor="let total of totalTypeSaving">
+        <td>{{total.type}}    <span *ngIf="total.allocation" style="float:right">{{total.allocation | number:'2.1-2'}}%</span></td>
+        <td>{{total.total | number:'2.1-2'}}</td>
+        <td>{{total.maturity | number:'2.1-2'}}</td>
+      </tr>
+      <tr>
+        <td><h6>Total</h6></td>
+        <td><h6>{{totalBalance | number:'2.1-2'}}</h6></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<button (click)="updateAllocation()">Show Allocation</button>
+</div>

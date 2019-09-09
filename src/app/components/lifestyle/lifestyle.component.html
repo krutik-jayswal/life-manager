@@ -1,0 +1,33 @@
+<div class="lifestyle-main" *ngIf="!readLife">
+  <div class="addLife">
+    <span class="read-life-link" (click)="readlife()">Read Life</span>
+    <div class="life-field">
+      <label class="life-field-label">Date</label><br />
+      <input type="date" [(ngModel)]="date" name="date" />
+    </div>
+    <div class="life-field">
+      <label class="life-field-label">Details of Day</label>
+      <ck-editor name="editor1" [(ngModel)]="editorValue" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>
+    </div>
+    <div class="life-buttons">
+      <button type="button" *ngIf="!isNewRecord" class="btn btn-md btn-primary lm-new-record-button" (click)='clearAll()'>New</button>
+      <button type="button" *ngIf="isNewRecord" class="btn btn-md btn-primary lm-save-button" (click)='save()'>Save</button>
+      <button type="button" *ngIf="!isNewRecord" id="{{id}}" class="btn btn-md btn-primary lm-save-button" (click)='update($event)'>Update</button>
+    </div>
+  </div>
+</div>
+<div class="lifestyle-main" *ngIf="readLife">
+  <span class="read-life-link" (click)="addlife()">Add</span>
+  Reading life
+  <div *ngFor="let life of lifeStyles">
+    <div class="each-life" id="{{life?.id}}">
+      <div class="action-buttons">
+        <span class="life-date">{{life?.date}}</span>
+        <span class="action-link-edit" (click)="edit($event)"></span>
+        <span class="action-links action-link-delete" (click)="delete($event)"></span>
+      </div>
+      <p [innerHTML]="life?.text"> </p>
+    </div>
+  </div>
+
+</div>

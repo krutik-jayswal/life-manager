@@ -1,0 +1,9 @@
+.displayblock{
+    display: block;
+}.account-main{
+    display:inline;
+    padding: 10px;
+}
+.account-grid{
+    padding: 20px;
+}

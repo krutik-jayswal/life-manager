@@ -1,0 +1,10 @@
+.stock-main{
+    padding: 30px;
+}
+.totalStock{
+    font-family: Roboto,sans-serif;
+    color: #666;
+    font-size: 18px;
+    padding-left: 10px;
+    margin-top: 8px;
+}

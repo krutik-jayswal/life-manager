@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content [formGroup]="form">
+
+  <mat-form-field>
+    <input matInput placeholder="Account Name" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Balance" formControlName="balance">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Type" formControlName="type">
+      <mat-option value="Credit">
+        Credit
+      </mat-option>
+      <mat-option value="Debit">
+        Debit
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions class="action-buttons">
+  <button type="button" *ngIf="isNewRecord" class="btn btn-md btn-primary lm-save-button" (click)='saveAccount()'>Save</button>
+  <button type="button" *ngIf="!isNewRecord" id="{{id}}" class="btn btn-md btn-primary lm-save-button" (click)='updateAccount($event)'>Update</button>
+  <button type="button" class="btn btn-md btn-primary lm-close-button" (click)='close()'>Close</button>
+</mat-dialog-actions>

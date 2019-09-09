@@ -1,0 +1,218 @@
+
+/* You can add global styles to this file, and also import other style files
+Copy all styles from http://akveo.com/blur-admin-mint/#/tables/basic
+http://akveo.com/blur-admin-mint/#/tables/basic
+http://akveo.com/blur-admin-mint/#/tables/basic
+*/
+@import "~bootstrap/dist/css/bootstrap.css";
+.heading{
+    text-align: left;
+    vertical-align:left;
+    font-size: 20px;
+    font-weight: 400;
+    font-variant: full-width;    
+    line-height: 35px;
+    background-color: #a687c3;
+    color:white!important; 
+}
+
+body {
+    /**background-image: url(/assets/images/login.jpg);*/
+    background-repeat: no-repeat;
+    background-color: #1c2b36;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: Roboto, sans-serif;
+}
+.template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+.lm-section{
+    margin: 10px;
+    border: 1px solid black;
+}
+.lm-section-header{
+    padding-left: 10px;
+    border-bottom: 1px solid black;
+    padding-bottom: 6px;
+    background-color: #b8b8b8;
+    color: white;
+}
+.lm-save-button{
+    float: left;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-left: 15%;
+}
+.lm-close-button{
+    float: left;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-left: 35%;
+}
+
+.action-links{
+    margin-left:10px; 
+}
+.action-link-edit{
+    cursor: pointer;
+    color: #f1f1f5;    
+    padding-left: 10px;
+    padding-right: 10px;
+    background-image: url(/assets/images/edit.png);
+    background-size: 20px;
+    background-repeat:no-repeat; 
+}
+.action-link-plus{
+    cursor: pointer;
+    color: #F1F1F5;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-image: url(/assets/images/plus.png);
+    background-size: 20px;
+    height: 20px;
+    width: 20px;
+    background-repeat:no-repeat;
+}
+.action-link-delete{
+    cursor: pointer;
+    color: #f1f1f5;
+    padding: 10px;
+    padding-top: 2px;
+    background-image: url(/assets/images/dustbin.png);
+    background-size: 20px;
+    background-repeat: no-repeat;
+}
+.action-link-close{
+    cursor: pointer;
+    color: #f1f1f5;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-image: url(/assets/images/delete.png);
+    background-size: 20px;
+}
+.action-link-show{
+    cursor: pointer;
+    color: #f1f1f5;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-image: url(/assets/images/eye.png);
+    background-size: 20px;
+}
+.action-link-sell{
+    cursor: pointer;
+    color: #f1f1f5;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-image: url(/assets/images/sell.png);
+    background-size: 18px;
+    background-repeat: no-repeat;
+}
+.action-link-transfer{
+    cursor: pointer;
+    color: #f1f1f5;
+    padding-left: 30px;
+    padding-right: 10px;
+    background-image: url(/assets/images/transffer.png);
+    background-size: 24px;
+    height: 22px;
+    width: 26px;
+    background-repeat: no-repeat;
+    margin-left: 10px;
+}
+
+.action-buttons{
+    display:block!important;
+}
+
+
+table{
+    width: 100%;
+    color:#666!important;
+}
+th{
+    /*background-color: #d4c1c1;
+    color:white;
+    background-color: #F0F3F4;*/
+    /*color:#666;*/
+    padding: 3px 10px;
+    border: 1px solid #dcdcdc;
+    line-height: 25px;
+}
+tr:hover{
+    background-color: rgba(0,0,0,.1);
+}
+td{
+    padding: 0.3em;
+    border: 1px solid #dcdcdc;
+	max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.tableDiv{
+    overflow: auto;
+    font-family: Roboto,sans-serif;
+    max-height: 380px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 24px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,.25);
+}
+.mat-dialog-title {
+    margin: 0 0 20px;
+    display: block;
+    padding: 5px 0px;
+    background-color: #4c678c;
+    color: white;
+    text-align: center;
+}
+.mat-dialog-container {
+    padding: 1px!important;
+    overflow-x: hidden!important;
+    overflow-y: auto!important;
+}
+mat-dialog-content:nth-child(even) {
+    padding-left: 10%!important;
+}
+.mat-dialog-content {
+    display: -ms-grid!important;
+    display: grid!important;
+    max-height: 65vh!important;
+    overflow: auto!important;
+    padding: 0% 3em!important;
+}
+
+::-webkit-scrollbar {
+    width: .4em;
+    height: .4em;
+}
+::-webkit-scrollbar {
+    width: .5em;
+    height: .5em;
+}
+ ::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.6);
+     cursor: pointer; 
+}
+
+::-webkit-scrollbar-thumb {
+     background: #d9d9d9; 
+     cursor: pointer; 
+}
+ ::-webkit-scrollbar-track {
+     background: rgba(255,255,255,.7); 
+}
+::-webkit-scrollbar-track {
+     background: 0 0; 
+}

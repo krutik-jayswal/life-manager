@@ -1,0 +1,32 @@
+.cashflow-layout{
+    width: 100%;
+    display: -webkit-inline-box;
+}
+.cashflow-router{
+    width: 80%;
+    background-color: #F0F3F4;
+}
+.vertical-menu {
+    min-width: 20%;    
+    box-shadow: 6px 0 6px rgba(0,0,0,.1);
+    min-height: 100%;    
+    background-color: #1C2B36;
+    opacity: 1;
+}
+
+.vertical-menu a {    
+    color: white;;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+        color: #209e91;
+}
+
+.vertical-menu a.active {
+    background-color: #354b8694;
+    color: white;
+    opacity: 1;
+}

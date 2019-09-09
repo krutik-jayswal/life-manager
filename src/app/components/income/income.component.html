@@ -1,0 +1,56 @@
+<div>
+    <div class="income-details">
+        <div>
+            <span class="action-link-plus" (click)="addNewIncome($event)" style="float:right;"></span>
+
+            <select id="year" style="float:right;margin-right:20px;margin-bottom:10px;" [(ngModel)]="incomeYear"
+                (change)="listIncomes()">
+                <option *ngFor="let year of years" value="{{year}}">{{year}}</option>
+            </select>
+            <select id="month" style="margin-bottom:10px;" [(ngModel)]="incomeMonth" (change)="listIncomes()">
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+        </div>
+        <div class="tableDiv">
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="5" class="heading">Income Details</td>
+                    </tr>
+                    <tr>
+                        <th>Income Name</th>
+                        <th>Amount</th>
+                        <th>Account</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let income of incomes">
+                        <td>{{income?.name}}</td>
+                        <td>{{income?.amount | number:'3.1-5'}}</td>
+                        <td>{{income?.account}}</td>
+                        <td>{{income?.date}}</td>
+                        <td id="{{income.id}}">
+                            <span class="action-link-edit" (click)="editIncome($event)"></span>
+                            <span class="action-links action-link-delete" (click)="deleteIncome($event)"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h6>
+            <div class="totalIncome">Total : <span>{{totalIncome}}</span></div>
+        </h6>
+    </div>

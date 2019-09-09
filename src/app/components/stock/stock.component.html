@@ -1,0 +1,36 @@
+<div class="stock-main">
+  <div>
+    <span class="action-link-plus" (click)="addNewStock($event)" style="float:right;"></span>
+  </div>
+  <div class="tableDiv">
+    <table>
+      <tr>
+        <td colspan="6" class="heading">Stock Details</td>
+      </tr>
+      <tr>
+        <th>Stock Name</th>
+        <th>Date</th>
+        <th>Qty x Price</th>
+        <th>Total Amount</th>
+        <th>From Account</th>
+        <th style="width: 23%;padding-left: 15px;">Action</th>
+      </tr>
+      <tr *ngFor="let stock of stocks">
+        <td>{{stock?.name}} ({{stock?.code}})</td>
+        <td>{{stock?.purchaseDate}}</td>
+        <td>{{stock?.numberOfShare}} x {{stock?.amount}}</td>
+        <td>{{stock?.totalAmount}}</td>
+        <td>{{stock?.account}}</td>
+        <td id="{{stock.stockId}}">
+          <span class="action-link-edit" (click)="editStock($event)"></span>
+          <span class="action-links action-link-delete" (click)="deleteStock($event)"></span>
+          <span class="action-links action-link-sell" (click)="sellStock($event)"></span>
+        </td>
+      </tr>
+    </table>
+    <h6>
+      <div class="totalStock">Total Stock: <span>{{totalStocks | number:'2.1-2'}}</span></div>
+    </h6>
+
+  </div>
+</div>

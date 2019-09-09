@@ -1,0 +1,15 @@
+<div class="cashflow-layout">
+    <div class="vertical-menu">
+      <a id="expense" (click)="showDetails($event)" class="active">Expense</a>
+      <a id="income" (click)="showDetails($event)">Income</a>
+      <a id="account" (click)="showDetails($event)">Accounts</a>
+      <a id="stock" (click)="showDetails($event)">Stocks/Assets</a>
+      <a id="saving" (click)="showDetails($event)">Savings</a>
+      <a id="futurefund" (click)="showDetails($event)">Future Funds</a>
+      <a id="recurring" (click)="showDetails($event)">SIP/Recurring Plan</a>
+      <a id="summary" (click)="showDetails($event)">Summary</a>
+    </div>
+    <div class="cashflow-router">
+        <router-outlet></router-outlet>
+    </div>
+</div>  

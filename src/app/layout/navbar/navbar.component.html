@@ -1,0 +1,35 @@
+<div class="main-menu-bar">
+  <a href="/cashflow/expense" class="al-logo clearfix"><span>Life</span>Manager</a>
+  <div class="navigation-bar">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top navbar-lifemanager">
+          <!--button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button-->
+          <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isCollapsed">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="cashflow/expense">Finance</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="todo">Tasks</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="lifestyle">Lifestyle</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="passwords">Passwords</a>
+              </li>     
+            </ul>
+        
+            <div class="d-inline-block logout-button" ngbDropdown #myDrop="ngbDropdown">
+                <span class="user"></span>
+                <button class="btn mr-2 logout-button" id="dropdownManual" ngbDropdownAnchor (focus)="myDrop.open()">{{userName}}</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownManual">
+                  <button class="dropdown-item" (click)='logout()'>Logout</button>
+                </div>
+              </div>
+          </div>
+        </nav>
+  </div>
+</div>

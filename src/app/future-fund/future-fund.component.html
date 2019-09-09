@@ -1,0 +1,64 @@
+<div class="fund-main">
+  <div class="fund-grid">
+    <div>
+      <span class="action-link-plus" (click)="addFund($event)" style="float:right;"></span>      
+    </div>
+    <div class="tableDiv">
+      <table>
+        <thead>
+          <tr>
+            <td colspan="7" class="heading">Funds</td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <th>Amount Needed</th>
+            <th>Desired Date</th>
+            <th>Linked Savings</th>
+            <th>Linked Stocks</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let fund of futureFunds" id="{{fund.id}}">
+            <td>{{fund?.name}}</td>
+            <td>{{fund?.amount | number:'2.1-2'}} ({{fund?.sumOfStocks + fund?.sumOfSaving}})</td>
+            <td>{{fund?.desiredFundDate}}</td>
+
+            <td *ngIf="fund.savings.length>0">
+              <div style="display: flex;border:1px;">
+                <span style="width: 80%;">{{fund?.sumOfSaving}}</span>
+                <span style="width: 20%;"class="action-link-edit" (click)="editSavingsInFund($event)"></span>
+              </div>
+            </td>
+            <td *ngIf="fund.savings.length<=0">
+               <div style="display: flex;border:1px;">
+                 <span style="width: 80%;">{{fund?.sumOfSaving}}</span>
+                 <span style="width: 20%;" class="action-link-plus" (click)="editSavingsInFund($event)"></span>
+                </div>
+            </td>
+
+            <td *ngIf="fund.stocks.length>0">
+                <div style="display: flex;border:1px;">
+                   <span style="width: 80%;">{{fund?.sumOfStocks}}</span>
+                   <span style="width: 20%;"class="action-link-edit" (click)="editStocksInFund($event)"></span>
+                </div>
+            </td>
+            
+            <td *ngIf="fund.stocks.length<=0">  
+                <div style="display: flex;border:1px;">
+                   <span style="width: 80%;">0</span>
+                   <span style="width: 20%;" class="action-link-plus" (click)="editStocksInFund($event)"></span>
+                </div>
+           </td>            
+            
+            <td id="{{fund.id}}">
+              <span class="action-link-edit" (click)="editFund($event)"></span>
+              <span class="action-links action-link-delete" (click)="deleteFund($event)"></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+  </div>

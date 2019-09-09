@@ -1,0 +1,12 @@
+.stock-save-button{
+    float: left;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-left: 15%;
+}
+.stock-close-button{
+    float: left;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-left: 35%;
+}

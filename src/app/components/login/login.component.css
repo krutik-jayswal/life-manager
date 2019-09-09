@@ -1,0 +1,39 @@
+.lm-login-form{
+    border-radius: 10px;
+    height: 280px;
+    width: 450px;
+    overflow: hidden;
+    background-color: #bebefe54;
+    padding: 20px;
+    color: white!important;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 12% 33%;
+}
+.lm-login-button{
+    float:right;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.ying-ying{
+    display: inline-flex;
+    width: 100%;
+}
+.app-image {
+    background-image: url(/favicon.ico);
+    height: 20%;
+    width: 14%;
+    margin-right: 20px;
+    background-repeat: no-repeat;
+}
+.app-title {
+        color: white;
+        font-size: 30px;
+        font: 400 35px/1.3 'Arizonia', Helvetica, sans-serif;
+}
+.line{
+    background-color:white;
+    margin-top: 0;
+    margin-bottom: 0;
+}
