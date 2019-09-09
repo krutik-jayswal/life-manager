@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # LifeManagerApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.1.
@@ -25,3 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+# life-manager
+Plan is to include all things using which we can track most of the things in life. Initial idea was to managing the expense.
+>>>>>>> 3150f5803739058559e424564d588e0f96a1a387
