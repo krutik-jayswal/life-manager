@@ -58,6 +58,7 @@ import { LinkFundSavingsComponent } from './link-fund-savings/link-fund-savings.
 import { LinkFundStocksComponent } from './link-fund-stocks/link-fund-stocks.component';
 import { SipRecurringComponent } from './sip-recurring/sip-recurring.component';
 import { SipRecurringOperationComponent } from './sip-recurring-operation/sip-recurring-operation.component';
+import { MoveToSavingsComponent } from './move-to-savings/move-to-savings.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,8 +91,8 @@ import { SipRecurringOperationComponent } from './sip-recurring-operation/sip-re
     LinkFundSavingsComponent,
     LinkFundStocksComponent,
     SipRecurringComponent,
-    SipRecurringOperationComponent
-    
+    SipRecurringOperationComponent,
+    MoveToSavingsComponent    
   ],
   imports: [
     FormsModule,
@@ -135,7 +136,8 @@ import { SipRecurringOperationComponent } from './sip-recurring-operation/sip-re
     FutureFundOperationComponent,
     LinkFundSavingsComponent,
     LinkFundStocksComponent,
-    SipRecurringOperationComponent
+    SipRecurringOperationComponent,
+    MoveToSavingsComponent
   ],
   providers: [
     Http,

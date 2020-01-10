@@ -27,6 +27,16 @@ export class ExpenseService {
 
     }
 
+    moveToSavings(expense:Expense,toAccount:string,dialogRef: MatDialogRef<ExpenseOperationComponent>)  {
+        this.http.post('/api/expense/moveToSavingAccount',this.utilityService.getFormUrlEncoded(expense)+'&toAccountId='+toAccount, this.auth.getToken()).subscribe
+        ((res: Response) => {
+            dialogRef.close();
+            alert("Saved");
+        }
+        );
+
+    }
+
     updateExpense(expense:Expense,dialogRef: MatDialogRef<ExpenseOperationComponent>)  {
         this.http.put('/api/expense/update',this.utilityService.getFormUrlEncoded(expense), this.auth.getToken()).subscribe
         ((res: Response) => {

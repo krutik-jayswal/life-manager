@@ -2,6 +2,7 @@
   <div class="expense-grid">
     <div>
       <span class="action-link-plus" (click)="addNewExpense($event)" style="float:right;"></span>
+      <span class="action-link-move" (click)="moveToSavings($event)" style="float:right;"></span>
       
       <select id="year" style="float:right;margin-right:20px;margin-bottom:10px;" [(ngModel)]="expenseYear" (change)="listExpenses()">
           <option *ngFor="let year of years" value="{{year}}">{{year}}</option>

@@ -9,6 +9,7 @@ import { Account } from '../../entity/account';
 import { MatDialog } from '@angular/material';
 import { ExpenseOperationComponent } from '../../expense-operation/expense-operation.component';
 import { IncomeService } from '../../services/income.service';
+import { MoveToSavingsComponent } from '../../move-to-savings/move-to-savings.component';
 @Component({
   templateUrl: './expense.component.html',
   styleUrls: ['./expense.component.css'],
@@ -159,6 +160,25 @@ export class ExpenseComponent implements OnInit {
         this.listExpenses();
       });
   }
+
+  moveToSavings(event) {
+    let dialogRef = this.dialog.open(MoveToSavingsComponent,
+      {
+        maxWidth: '50%',
+        maxHeight: '50%',
+        width: '80%',
+        height: '80%',
+        data : {
+          title: 'Move to Savings',
+          date : new Date().toISOString().split('T')[0]
+        }
+      });
+      dialogRef.updatePosition({ top: '12%', left: '25%' });
+      dialogRef.afterClosed().subscribe(result => {
+        this.listExpenses();
+      });
+  }
+
   highlightHtmltElement(event){
     if(this.highlightOnclick){
       for(let i=0;(event.srcElement.parentElement.children.length-1)>i;i++){
