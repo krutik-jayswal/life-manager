@@ -7,6 +7,7 @@ import { AccountService } from '../../services/account-service';
 import { Account } from '../../entity/account';
 import { MatDialog } from '@angular/material';
 import { IncomeOperationComponent } from '../../income-operation/income-operation.component';
+import { UtilityService } from '../../services/lm-utility.service';
 
 @Component({
   selector: 'app-incomes',
@@ -36,7 +37,12 @@ export class IncomeComponent implements OnInit {
   public totalIncome=0;
 
 
-  constructor(public dialog: MatDialog,private incomeService: IncomeService, private categoryService: IncomeCategoryService, private accountService: AccountService) { }
+  constructor(public dialog: MatDialog,
+              private incomeService: IncomeService,
+              private categoryService: IncomeCategoryService,
+              private accountService: AccountService,
+              private utilityService: UtilityService,
+              ) { }
 
   ngOnInit(): void {
     this.categoryService.getCategory().subscribe(categories => this.categories = categories);
@@ -50,7 +56,17 @@ export class IncomeComponent implements OnInit {
     this.incomeMonth = new Date().getMonth() + 1;
     this.listIncomes()
   }
- 
+  getFinanceYearIncomes(){
+    this.totalIncome=0;
+    this.incomeService.getFinanceYearIncomes(this.utilityService.getCurrentFiscalYear()).subscribe(incomes => 
+      {
+        this.incomes = incomes
+        for(let i=0;i<this.incomes.length;i++){
+          this.totalIncome+=this.incomes[i].amount;
+        }
+      }); 
+      return false;
+  }
   editIncome(event: any): void {
     this.incomeService.getIncome(event.toElement.parentElement.id).subscribe(income =>{
       this.dialog.open(IncomeOperationComponent,

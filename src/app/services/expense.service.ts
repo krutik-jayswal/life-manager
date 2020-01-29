@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import { map } from "rxjs/operators";
 import { ExpenseOperationComponent } from '../expense-operation/expense-operation.component';
 import { MatDialogRef } from '@angular/material';
+import { ExpenseReport } from '../entity/expense-report';
 
 @Injectable()
 export class ExpenseService {
@@ -147,6 +148,20 @@ export class ExpenseService {
                         item.category?item.category.name:undefined,
                         item.category?item.category.expenseCategoryId:undefined,                        
                         item.necessary
+                    );
+                  });
+                })
+        );
+    }
+
+    getFinanceYearExpenses(financeYear:string) : Observable<ExpenseReport[]>{
+        return this.http.get('/api/expense/listFinanceYearExpense?financeYear='+financeYear, this.auth.getToken()).pipe(
+                map((res: any) => {
+                  return res.map(item => {
+                    return new ExpenseReport(
+                        item[0],
+                        item[1],
+                        item[2]
                     );
                   });
                 })

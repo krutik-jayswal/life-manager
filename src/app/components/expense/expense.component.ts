@@ -10,6 +10,9 @@ import { MatDialog } from '@angular/material';
 import { ExpenseOperationComponent } from '../../expense-operation/expense-operation.component';
 import { IncomeService } from '../../services/income.service';
 import { MoveToSavingsComponent } from '../../move-to-savings/move-to-savings.component';
+import { UtilityService } from '../../services/lm-utility.service';
+import { ExpenseReport } from '../../entity/expense-report';
+
 @Component({
   templateUrl: './expense.component.html',
   styleUrls: ['./expense.component.css'],
@@ -20,6 +23,8 @@ export class ExpenseComponent implements OnInit {
   public isNewRecord: boolean = true;
   public showExpenseSummary: boolean = false;
   public showUncategorisedExpense: boolean = false;
+  public showExpenseDetails: boolean =true;
+  public showCurrentFiscalYearReport: boolean = false;
   public highlightOnclick:boolean;
   public date: Date = new Date();
 
@@ -40,15 +45,18 @@ export class ExpenseComponent implements OnInit {
   public totalExpense=0;
   public totalSavings=0;
   public expenses: Expense[];
+  public expensesReport: ExpenseReport[];
   public accounts: Account[];
   public creditAmount = 0;
   public totalIncome = 0;
+  public totalFinanceYearExpense = 0;
 
   constructor(private expenseService: ExpenseService,
     private categoryService:ExpenseCategoryService,
     private incomeService:IncomeService,
     public dialog: MatDialog,
-    public accountService:AccountService) {
+    public accountService:AccountService,
+    private utilityService: UtilityService) {
   }
 
   ngOnInit(): void {
@@ -226,9 +234,24 @@ export class ExpenseComponent implements OnInit {
     this.listExpenses();
     return false;
   }
-  
+  selectedComponent($event:any){
+    if($event.currentTarget.value=="expense"){
+      this.showCurrentFiscalYearReport=false;
+      this.showExpenseSummary=false;
+      this.showExpenseDetails=true;
+    }else if($event.currentTarget.value=="summary"){
+      this.showCurrentFiscalYearReport=false;
+      this.showExpenseSummary=true;
+      this.showExpenseDetails=false;
+    }else{
+      this.showCurrentFiscalYearReport=true;
+      this.showExpenseSummary=false;
+      this.showExpenseDetails=false;
+      this.currentFinanceYearReport(undefined);
+    }
+  }
   toggleSummaryView($event:any){
-    this.showExpenseSummary=!this.showExpenseSummary;
+    this.showExpenseSummary=!this.showExpenseSummary;    
     if(this.showExpenseSummary){
       $event.srcElement.innerHTML='Expense';
     }else{
@@ -249,6 +272,18 @@ export class ExpenseComponent implements OnInit {
       this.showUncategorisedExpenses(null);
     }
     );  
+  }
+  currentFinanceYearReport($event:any){
+    this.showCurrentFiscalYearReport=true;
+    this.expenseService.getFinanceYearExpenses(this.utilityService.getCurrentFiscalYear()).subscribe(expenseReport=>{
+      this.totalExpense=0;
+      this.expensesReport=expenseReport;
+      for(var i=0;i<this.expensesReport.length;i++){
+        this.totalFinanceYearExpense+=expenseReport[i].amount;
+      }
+    });
+
+    return false;
   }
   showYearlyReport($event:any){
     this.categoryService.getCategory().subscribe(categories =>

@@ -51,6 +51,24 @@ export class IncomeService {
           );
     }
 
+    getFinanceYearIncomes(financeYear:string) : Observable<Income[]>{
+        return this.http.get('/api/income/getFinanceYearIncome?financeYear='+financeYear, this.auth.getToken()).pipe(
+            map((res: any) => {
+              return res.map(item => {
+                  return new Income(
+                    item.incomeId,
+                    item.name,
+                    item.amount,
+                    item.date,
+                    item.toAccount?item.toAccount.name:"",
+                    item.toAccount?item.toAccount.accountId:"",
+                    item.category?item.category.incomeCategoryId:"",
+                    item.category?item.category.name:""
+                );
+              });
+            })
+          );
+    }
     getIncome(incomeId:number) : Observable<Income>{
         return this.http.get('/api/income/get?id='+incomeId, this.auth.getToken()).pipe(
                 map((res: any) => {

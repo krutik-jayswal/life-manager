@@ -26,5 +26,21 @@ export class UtilityService {
         }
         return formBody.join('&');
     }
+
+    getCurrentFiscalYear() {
+        var today = new Date();
+         
+        //get current month
+        var curMonth = today.getMonth();
+         
+        var fiscalYr = "";
+        if (curMonth > 3) { 
+            fiscalYr= "1/04/"+today.getFullYear()+"#"+"31/03/"+(today.getFullYear()+1);
+        } else {
+            fiscalYr= "1/04/"+(today.getFullYear()-1)+"#"+"31/03/"+today.getFullYear();
+        }
+         
+        return encodeURIComponent(fiscalYr);
+     }
 }
 

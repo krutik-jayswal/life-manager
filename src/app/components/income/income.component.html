@@ -7,6 +7,7 @@
                 (change)="listIncomes()">
                 <option *ngFor="let year of years" value="{{year}}">{{year}}</option>
             </select>
+            <a href="" (click)="getFinanceYearIncomes()">Finance Year Incomes</a>
             <select id="month" style="margin-bottom:10px;" [(ngModel)]="incomeMonth" (change)="listIncomes()">
                 <option value="1">January</option>
                 <option value="2">February</option>

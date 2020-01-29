@@ -7,13 +7,18 @@
       <select id="year" style="float:right;margin-right:20px;margin-bottom:10px;" [(ngModel)]="expenseYear" (change)="listExpenses()">
           <option *ngFor="let year of years" value="{{year}}">{{year}}</option>
       </select>
-      <a href="" (click)="toggleSummaryView($event)"  style="float:left;margin-right:20px;margin-bottom:10px;">Summary</a>  
-      <!-- <a href="" (click)="showUncategorisedExpenses($event)"  style="float:left;margin-right:20px;margin-bottom:10px;">Show Uncategorised</a>        -->
-      <a href="" (click)="resetFilter()"  style="float:left;margin-right:20px;margin-bottom:10px;">Reset Filter</a>  
-      <select id="account" style="float:right;margin-right:20px;margin-bottom:10px;" [(ngModel)]="accountIdFilter" (change)="listExpenses()">
-            <option *ngFor="let account of accounts" [value]="account.accountId">{{account.name}}</option>
+      <!--<a href="" (click)="currentFinanceYearReport($event)"  style="float:left;margin-right:20px;margin-bottom:10px;">Current Fiscal Year</a>  
+      <a href="" (click)="toggleSummaryView($event)"  style="float:left;margin-right:20px;margin-bottom:10px;">Summary</a>        
+      <a href="" (click)="resetFilter()"  style="float:left;margin-right:20px;margin-bottom:10px;">Reset Filter</a>  -->
+      <select id="componentSelection" style="float:right;margin-right:20px;margin-bottom:10px;" (change)="selectedComponent($event)">
+        <option value="expense">Expense</option>
+        <option value="summary">Summary</option>
+        <option value="financeYear">Finance Year</option>
       </select>
-      
+      <select id="account" style="float:right;margin-right:20px;margin-bottom:10px;" [(ngModel)]="accountIdFilter" (change)="listExpenses()">
+        <option *ngFor="let account of accounts" [value]="account.accountId">{{account.name}}</option>
+      </select>
+
       <div class="htmlDeletion">
         <label for="highlightOnclick">Highlight Row on click?</label>
         <input type="checkbox" name="highlightOnclick" [(ngModel)]="highlightOnclick"> 
@@ -33,7 +38,7 @@
         <option value="12">December</option>
       </select>
     </div>
-    <div class="tableDiv"  *ngIf="!showExpenseSummary">
+    <div class="tableDiv"  *ngIf="showExpenseDetails">
       <table>
         <thead>
           <tr>
@@ -119,6 +124,34 @@
        <tr>
           <td>Total</td>
           <td>{{totalExpense | number:'2.1-2'}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="expense-report" *ngIf="showCurrentFiscalYearReport">
+    <table style="width: 80%;" class="tableDiv">
+      <thead>
+        <tr>
+            <td colspan="6" class="heading">
+                <span>Current Finance Year Report</span>
+            </td>
+        </tr>
+        <tr>
+            <th>Category</th>
+            <th>Total Amount</th>
+            <th>Count</th>
+          </tr>
+      </thead>    
+        <ng-container  *ngFor="let expenseReport of expensesReport">
+         <tr> 
+            <td  class="expense-report-td">{{expenseReport.categoryName}}</td>
+            <td  class="expense-report-td">{{expenseReport.amount}}</td>
+            <td  class="expense-report-td">{{expenseReport.count}}</td>          
+         </tr>
+       </ng-container>
+       <tr>
+          <td>Total</td>
+          <td>{{totalFinanceYearExpense | number:'2.1-2'}}</td>
       </tr>
     </table>
   </div>
